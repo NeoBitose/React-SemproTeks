@@ -5,7 +5,7 @@ export default function generatePDF(d) {
   const doc = new jsPDF({
     orientation: "portrait", 
     unit: "mm",              
-    format: [350, 600]       
+    format: [370, 600]       
   });
 
   doc.setFontSize(12);
@@ -40,7 +40,8 @@ export default function generatePDF(d) {
     "BERDOA DAPAT DIAKHIRI",
     "=============================",
     `Seminar proposal kali ini akan disampaikan oleh ${d.jenis_mahasiswa_sempro} ${d.nama_mahasiswa_sempro}.`,
-    `Dengan judul proposal: ${d.judul_proposal}`,
+    `Dengan judul proposal:`,
+    `${d.judul_proposal}`,
     `Kepada ${d.jenis_mahasiswa_sempro} ${d.nama_mahasiswa_sempro}, dipersilakan untuk memulai`,
     "presentasinya selama 15 menit",
     "=============================",
