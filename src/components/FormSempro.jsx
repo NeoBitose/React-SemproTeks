@@ -16,6 +16,7 @@ function FormSempro() {
     nama_penguji_1: "",
     jenis_penguji_2: "bapak",
     nama_penguji_2: "",
+    pembagian: "ya"
   });
 
   const handleChange = (e) => {
@@ -26,6 +27,8 @@ function FormSempro() {
     e.preventDefault();
     generatePDF(formData);
   };
+
+  console.log(formData);
 
   return (
     <>
@@ -64,9 +67,19 @@ function FormSempro() {
             <div className="row">
               <div className="col-12 col-lg-8 mt-4 mt-md-0 mx-auto">
                 <form onSubmit={handleSubmit}>
-                  <div className="form-group mt-3">
-                    <label className="mb-2">Nama Moderator</label>
-                    <input type="text" className="form-control" name="moderator" onChange={handleChange} />
+
+                  <div className="row mt-3">
+                    <div className="col-md-6 form-group mt-3">
+                      <label className="mb-2">Nama Moderator</label>
+                      <input type="text" className="form-control" name="moderator" onChange={handleChange} />
+                    </div>
+                    <div className="col-md-6 form-group mt-3">
+                      <label className="mb-2">Pembagian Teks</label>
+                      <select name="pembagian" className="form-control" onChange={(e) => {console.log("VALUE:", e.target.value);handleChange(e);}}>
+                        <option value="ya">Dibagikan</option>
+                        <option value="tidak">Tidak Dibagikan</option>
+                      </select>
+                    </div>
                   </div>
 
                   <div className="row mt-3">

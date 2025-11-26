@@ -3,9 +3,9 @@ import jsPDF from "jspdf";
 export default function generatePDF(d) {
 
   const doc = new jsPDF({
-    orientation: "portrait", 
-    unit: "mm",              
-    format: [370, 800]       
+    orientation: "portrait",
+    unit: "mm",
+    format: [370, 700]
   });
 
   doc.setFontSize(12);
@@ -14,6 +14,24 @@ export default function generatePDF(d) {
   const allIbu = [d.jenis_pembimbing_1, d.jenis_penguji_1, d.jenis_penguji_2].every(j => j === 'ibu');
   const panggilan = allBapak ? "Bapak" : allIbu ? "Ibu" : "Bapak & Ibu";
   const judulWrapped = doc.splitTextToSize(d.judul_proposal, 300);
+
+  let blokPembagian;
+
+  if (d.pembagian === "ya") {
+    blokPembagian = [
+      `Untuk para audiens yang ingin mengakses draft proposal dari ${d.jenis_mahasiswa_sempro} ${d.nama_mahasiswa_sempro}`,
+      "bisa melalui link yang sudah dibagikan di kolom chat",
+      "============================="
+    ];
+  } else {
+    blokPembagian = [
+      `Untuk para audiens yang ingin mengakses draft proposal dari ${d.jenis_mahasiswa_sempro} ${d.nama_mahasiswa_sempro}`,
+      "kami tidak akan membagikan dalam bentuk softfile,",
+      "tetapi kami akan mengirimkan link record seminar proposal pada hari ini.",
+      `dikarenakan ada beberapa hal yang akan merugikan pihak ${d.jenis_mahasiswa_sempro} ${d.nama_mahasiswa_sempro}`,
+      "============================="
+    ];
+  }
 
   const lines = [
     "Teks Sempro",
@@ -55,8 +73,8 @@ export default function generatePDF(d) {
     "=============================",
     `Terima kasih atas tanggapan dari ${d.jenis_penguji_1} ${d.nama_penguji_1}.`,
     "=============================",
-    `Selanjutnya saya persilahkan kepada dosen pembahas kedua ${d.jenis_penguji_2} ${d.nama_penguji_2},`, 
-    "untuk memberikan pertanyaan atau tanggapann ya selama 15 menit", 
+    `Selanjutnya saya persilahkan kepada dosen pembahas kedua ${d.jenis_penguji_2} ${d.nama_penguji_2},`,
+    "untuk memberikan pertanyaan atau tanggapann ya selama 15 menit",
     `kepada ${d.jenis_mahasiswa_sempro} ${d.nama_mahasiswa_sempro}`,
     "=============================",
     `Baik terimakasih atas tanggapan dan masukan dari ${d.jenis_penguji_2} ${d.nama_penguji_2}.`,
@@ -72,22 +90,13 @@ export default function generatePDF(d) {
     `(Jika tidak ada tanggapan: dipersilakan kepada ${d.jenis_mahasiswa_sempro} ${d.nama_mahasiswa_sempro} untuk menutup presentasinya)`,
     `(Jika ada tanggapan: kami persilakan kepada audiens untuk memberikan tanggapan kepada ${d.jenis_mahasiswa_sempro} ${d.nama_mahasiswa_sempro})`,
     "=============================",
-    `Baik terimakasih dan SELAMAT saya ucapkan untuk ${d.jenis_mahasiswa_sempro} ${d.nama_mahasiswa_sempro}`, 
+    `Baik terimakasih dan SELAMAT saya ucapkan untuk ${d.jenis_mahasiswa_sempro} ${d.nama_mahasiswa_sempro}`,
     "yang telah menyelesaikan seminar proposalnya pada hari ini.",
     "=============================",
     `Saya ucapkan terima kasih juga atas kehadiran ${panggilan} dosen,`,
-    "serta para audiens pada kegiatan seminar proposal pagi hari ini.",
+    "serta para audiens pada kegiatan seminar proposal pada hari ini.",
     "=============================",
-    "(Jika dari kakaknya mau dan mengumpulkan)",
-    `Untuk para audiens yang ingin mengakses draft proposal dari ${d.jenis_mahasiswa_sempro} ${d.nama_mahasiswa_sempro}`,
-    "bisa melalui link yang sudah dibagikan di kolom chat",
-    "=============================",
-    "(Jika kakaknya tidak mau mengumpulkan)",
-    `Untuk para audiens yang ingin mengakses draft proposal dari ${d.jenis_mahasiswa_sempro} ${d.nama_mahasiswa_sempro}`,
-    "kami tidak akan membagikan dalam bentuk softfile,",
-    "tetapi kami akan mengirimkan link record seminar proposal pada hari ini.",
-    `dikarenakan ada beberapa hal yang akan merugikan pihak ${d.jenis_mahasiswa_sempro} ${d.nama_mahasiswa_sempro}`,
-    "=============================",
+    ...blokPembagian,
     `Demikian seminar proposal hari ini. Saya, ${d.moderator}, selaku moderator, pamit undur diri.`,
     "jika ada kurang lebihnya perkataan saya, saya mohon maaf yang sebesar besarnya.",
     "Wassalamu'alaikum Wr. Wb."
