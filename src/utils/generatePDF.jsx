@@ -5,7 +5,7 @@ export default function generatePDF(d) {
   const doc = new jsPDF({
     orientation: "portrait", 
     unit: "mm",              
-    format: [370, 600]       
+    format: [370, 800]       
   });
 
   doc.setFontSize(12);
@@ -13,6 +13,7 @@ export default function generatePDF(d) {
   const allBapak = [d.jenis_pembimbing_1, d.jenis_penguji_1, d.jenis_penguji_2].every(j => j === 'bapak');
   const allIbu = [d.jenis_pembimbing_1, d.jenis_penguji_1, d.jenis_penguji_2].every(j => j === 'ibu');
   const panggilan = allBapak ? "Bapak" : allIbu ? "Ibu" : "Bapak & Ibu";
+  const judulWrapped = doc.splitTextToSize(d.judul_proposal, 300);
 
   const lines = [
     "Teks Sempro",
@@ -41,7 +42,7 @@ export default function generatePDF(d) {
     "=============================",
     `Seminar proposal kali ini akan disampaikan oleh ${d.jenis_mahasiswa_sempro} ${d.nama_mahasiswa_sempro}.`,
     `Dengan judul proposal:`,
-    `${d.judul_proposal}`,
+    ...judulWrapped,
     `Kepada ${d.jenis_mahasiswa_sempro} ${d.nama_mahasiswa_sempro}, dipersilakan untuk memulai`,
     "presentasinya selama 15 menit",
     "=============================",
