@@ -104,10 +104,16 @@ export default function generatePDF(d) {
   let y = 10;
   const lineHeight = 8;
 
+  const date = new Date(Date.now());
+
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+
   lines.forEach((line) => {
     doc.text(line, 10, y);
     y += lineHeight;
   });
 
-  doc.save(`teks-sempro-${Date.now()}.pdf`);
+  doc.save(`teks-sempro-${d.nama_mahasiswa_sempro}-(${year}-${month}-${day}).pdf`);
 }
