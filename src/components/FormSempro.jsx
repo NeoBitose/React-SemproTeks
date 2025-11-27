@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import generatePDF from "../utils/generatePDF";
-// import "bootstrap/dist/css/bootstrap.min.css";
-import "./FormSempro.css"; // optional custom CSS
+import "./FormSempro.css";
+import Hero from "../assets/img/radio-presenter.png";
 
 export default function FormSempro() {
   const [formData, setFormData] = useState({
@@ -33,7 +33,7 @@ export default function FormSempro() {
       {/* Header */}
       <header className="ns-header fixed-top shadow-sm bg-white">
         <div className="container d-flex align-items-center justify-content-between py-2">
-          <div className="d-flex align-items-center gap-2" style={{ cursor: 'pointer' }} onClick={() => window.scrollTo(0,0)}>
+          <div className="d-flex align-items-center gap-2" style={{ cursor: 'pointer' }} onClick={() => window.scrollTo(0, 0)}>
             <div className="brand-circle">N</div>
             <span className="brand-text">NeoSempro</span>
           </div>
@@ -57,6 +57,13 @@ export default function FormSempro() {
                   <a href="#form-section" className="btn btn-success btn-lg rounded-pill me-2">Mulai Sekarang</a>
                   <a href="#" className="btn btn-outline-secondary btn-lg rounded-pill">Lihat Info</a>
                 </div>
+              </div>
+              <div className="col-lg-5 mt-4 mt-lg-0 text-center">
+                <img
+                  src={Hero}
+                  alt="Hero Illustration"
+                  className="img-fluid"
+                />
               </div>
             </div>
           </div>
@@ -85,7 +92,7 @@ export default function FormSempro() {
                       className="form-control"
                       value={formData.moderator}
                       onChange={handleChange}
-                      placeholder="Contoh: Budi Santoso"
+                      placeholder="Contoh: Alif Ramadhan"
                       required
                     />
                   </div>
@@ -110,7 +117,7 @@ export default function FormSempro() {
                   </div>
                   <div className="col-md-9">
                     <label className="form-label">Nama Mahasiswa</label>
-                    <input type="text" name="nama_mahasiswa_sempro" className="form-control" value={formData.nama_mahasiswa_sempro} onChange={handleChange} required />
+                    <input type="text" name="nama_mahasiswa_sempro" className="form-control" value={formData.nama_mahasiswa_sempro} placeholder="Contoh: Alif Ramadhan" onChange={handleChange} required />
                   </div>
                   <div className="col-12">
                     <label className="form-label">Judul Proposal</label>
@@ -130,7 +137,7 @@ export default function FormSempro() {
                   </div>
                   <div className="col-md-9">
                     <label className="form-label">Nama Pembimbing 1</label>
-                    <input type="text" name="nama_pembimbing_1" className="form-control" value={formData.nama_pembimbing_1} onChange={handleChange} required />
+                    <input type="text" name="nama_pembimbing_1" className="form-control" value={formData.nama_pembimbing_1} placeholder="Contoh: Prof. Alif Ramadhan, S.Kom, M.Kom, Ph.D." onChange={handleChange} required />
                   </div>
                 </div>
 
@@ -141,7 +148,7 @@ export default function FormSempro() {
                       <option value="bapak">Bapak</option>
                       <option value="ibu">Ibu</option>
                     </select>
-                    <input type="text" name="nama_penguji_1" className="form-control" value={formData.nama_penguji_1} onChange={handleChange} required />
+                    <input type="text" name="nama_penguji_1" className="form-control" value={formData.nama_penguji_1} placeholder="Contoh: Dr. Alif Ramadhan, S.Pd, M.Se." onChange={handleChange} required />
                   </div>
 
                   <div className="col-md-6">
@@ -150,7 +157,7 @@ export default function FormSempro() {
                       <option value="bapak">Bapak</option>
                       <option value="ibu">Ibu</option>
                     </select>
-                    <input type="text" name="nama_penguji_2" className="form-control" value={formData.nama_penguji_2} onChange={handleChange} required />
+                    <input type="text" name="nama_penguji_2" className="form-control" value={formData.nama_penguji_2} placeholder="Contoh: Prof. Alif Ramadhan, ST., M.Sc." onChange={handleChange} required />
                   </div>
                 </div>
 
