@@ -1,0 +1,95 @@
+:root {
+--ns-primary: #16a34a;
+--ns-primary-500: #22c55e;
+--ns-secondary: #2563eb;
+--ns-bg: #f8fafc;
+}
+
+
+.neosempro-root {
+font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+background: var(--ns-bg);
+color: #111827;
+}
+
+
+/* Header */
+.ns-header {
+background: rgba(255,255,255,0.92);
+backdrop-filter: blur(6px);
+border-bottom: 1px solid rgba(15,23,42,0.04);
+z-index: 1000;
+}
+.brand-circle {
+width: 36px; height: 36px; border-radius: 8px; background: var(--ns-primary); color: white; display:flex; align-items:center; justify-content:center; font-weight:700; box-shadow: 0 6px 18px rgba(34,197,94,0.12);
+}
+.brand-circle.small { width:28px; height:28px; border-radius:6px }
+.brand-text { color: var(--ns-primary); font-weight:700; font-size:1.125rem }
+
+
+/* Mobile menu */
+.mobile-menu { display:none; }
+.mobile-menu.open { display:block; }
+.mobile-link { color: #1f2937; }
+
+
+/* Hero */
+.badge-live { display:inline-flex; align-items:center; gap:8px; background: rgba(34,197,94,0.08); color:var(--ns-primary); padding:6px 10px; border-radius:999px; font-weight:600; font-size:0.75rem }
+.text-gradient { background: linear-gradient(90deg,var(--ns-primary),var(--ns-primary-500)); -webkit-background-clip:text; background-clip:text; color:transparent }
+
+
+.ns-card { border-radius:18px }
+.ns-card .card-header { border-bottom:1px solid rgba(15,23,42,0.04) }
+.dot-row .dot { display:inline-block; width:8px; height:8px; border-radius:99px; margin-right:6px }
+.dot.red{ background:#ef4444 } .dot.yellow{ background:#f59e0b } .dot.green{ background:#22c55e }
+
+
+.stat-card { min-height:64px }
+.bg-success-light { background: rgba(34,197,94,0.06) }
+.bg-primary-light { background: rgba(59,130,246,0.06) }
+
+
+/* Charts container */
+.chart-container { position:relative; width:100%; height:250px; }
+
+
+/* Card accent top */
+.accent-top { height:8px; background: linear-gradient(90deg, var(--ns-primary), var(--ns-primary-500)); }
+
+
+/* Inputs */
+.input-group-text i, .input-group-text svg { font-size:1rem }
+
+
+/* Form Card */
+.card.rounded-4 { border-radius:20px }
+
+
+/* Buttons */
+.btn-success { background: var(--ns-primary); border-color: var(--ns-primary) }
+.btn-success:hover { background: #13843a }
+
+
+/* Footer */
+footer.bg-dark { background: #0f1724 }
+
+
+/* Small animations */
+@keyframes blob { 0% { transform: translate(0,0) scale(1) } 33% { transform: translate(30px,-50px) scale(1.06) } 66% { transform: translate(-20px,20px) scale(0.95) } 100% { transform: translate(0,0) scale(1) } }
+
+
+/* utility */
+.rounded-4 { border-radius: 18px }
+
+
+/* responsive tweaks */
+@media (max-width: 767px) {
+.ns-header .container { padding-left: 12px; padding-right: 12px }
+}
+
+
+/* small niceties */
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace }
+
+
+/* End of NeoSempro.css */
